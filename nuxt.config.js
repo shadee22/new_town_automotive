@@ -42,6 +42,12 @@ export default {
     {path: '/edit_item', handler: '~/api/edit_item.js'},
     {path: '/delete_item_from_invoice', handler: '~/api/delete_item_from_invoice.js'},
   ],
+  axios : {
+    headers : {
+      "Accept" : "*/*",
+
+    }
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     'nuxt-sweetalert2'
