@@ -43,10 +43,7 @@ export default {
     {path: '/delete_item_from_invoice', handler: '~/api/delete_item_from_invoice.js'},
   ],
   axios : {
-    headers : {
-      "Accept" : "*/*",
-
-    }
+    header: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;application/json' },
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
