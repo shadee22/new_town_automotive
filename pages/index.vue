@@ -23,12 +23,13 @@ export default {
   },
   created() {
     this.$router.push("/invoices");
-    this.$axios
-      .get("get_all_invoices")
-      .then((res) => {
-        this.collection = res;
-      })
-      .catch((e) => alert(e));
+    // this.$axios
+    //   .get("get_all_invoices")
+    //   .then((res) => {
+    //     this.collection = res;
+    //   })
+    //   .catch((e) => alert(e));
   },
+
 };
 </script>
