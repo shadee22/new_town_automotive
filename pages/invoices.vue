@@ -96,7 +96,7 @@ export default {
   },
   async created() {
     await this.$axios
-      .$get("get_all_invoices")
+      .$get("/get_all_invoices")
       .then((res) => {
         this.collection = res;
       })
