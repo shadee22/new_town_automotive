@@ -98,9 +98,13 @@ export default {
     await this.$axios
       .$get("/get_all_invoices")
       .then((res) => {
+        console.log('get all invocies response ' , res);
         this.collection = res;
       })
-      .catch((e) => alert(e));
+      .catch((e) => {
+        console.log("invoice error " + e);
+        alert(e);
+      });
   },
   methods: {
     route_to_invoice(name) {
