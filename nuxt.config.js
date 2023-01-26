@@ -42,9 +42,9 @@ export default {
     {path: '/edit_item', handler: '~/api/edit_item.js'},
     {path: '/delete_item_from_invoice', handler: '~/api/delete_item_from_invoice.js'},
   ],
+  // baseUrl : 'https://new-town-automotive.vercel.app/',
   axios : {
-    baseUrl : 'https://new-town-automotive.vercel.app/',
-    // baseUrl : '/',
+    baseUrl : '/',
     // browserBaseURL : '/',
     header: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;application/json',"Access-Control-Allow-Origin": "*" },
   },
