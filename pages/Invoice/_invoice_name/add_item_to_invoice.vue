@@ -5,6 +5,11 @@
       <Sidebar class="col-span-2" />
       <div class="col-span-10 py-8 h-full pr-4">
         <div class="font-bold text-2xl pb-6 flex items-center gap-4">
+          <NuxtLink
+            :to="'/invoice/' + $route.params.invoice_name"
+            class="text-white px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-sm text-semibold"
+            >Go back </NuxtLink
+          >
           Add Item to : {{ $route.params.invoice_name }}
         </div>
         <form @submit.prevent="save_item" class="">
@@ -57,7 +62,8 @@ export default {
         retail_price: "",
       },
     };
-  },  middleware : 'authenticated',
+  },
+  middleware: "authenticated",
 
   created() {
     if (this.$route.params.table_name) {
