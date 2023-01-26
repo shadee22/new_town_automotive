@@ -26,7 +26,7 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
+  middleware : 'authenticated',
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxt/postcss8',
@@ -44,7 +44,9 @@ export default {
   ],
   axios : {
     baseUrl : 'https://new-town-automotive.vercel.app/',
-    header: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;application/json' },
+    // baseUrl : '/',
+    // browserBaseURL : '/',
+    header: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;application/json',"Access-Control-Allow-Origin": "*" },
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

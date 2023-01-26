@@ -33,7 +33,6 @@ export default {
       sidebars: [
         // {name : 'Current Table' },
         { name: "Invoices" },
-        { name: "Settings" },
         { name: "New Invoice" },
         // { name: "Create Table" },
       ],

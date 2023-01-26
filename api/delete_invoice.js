@@ -7,18 +7,21 @@ export default async function (req, res, next) {
         if (err) {
             return next(err)
         }
-        try {
-            fdb.db.collection('Invoices').doc(req.body?.invoice_name).delete().then(res=>{
-                console.log('deleted document' , res);
-            });
-            console.log(req.body.invoice_name)
-            res.end(JSON.stringify('document deleted'));
-            return;
-            next();
-
-        } catch (error) {
-            console.log('firebase error of snapshot ', error);
+        if(req.body?.invoice_name){
+            try {
+                fdb.db.collection('Invoices').doc(req.body?.invoice_name).delete().then(res=>{
+                    console.log('deleted document' , res);
+                });
+                console.log(req.body.invoice_name)
+                res.end(JSON.stringify('document deleted'));
+                return;
+                next();
+    
+            } catch (error) {
+                console.log('firebase error of snapshot ', error);
+            }
         }
+        
         // console.log(fdb.db);
         res.end(JSON.stringify('Something Went Wrong while getting firebase Data'));
         return;

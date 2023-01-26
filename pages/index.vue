@@ -20,7 +20,8 @@ export default {
     return {
       collection: [],
     };
-  },
+  },  middleware : 'authenticated',
+
   created() {
     this.$router.push("/invoices");
     // this.$axios

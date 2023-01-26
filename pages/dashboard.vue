@@ -11,6 +11,10 @@
 
 <script>
 export default {
+  created(){
+    // alert(this.$store.getters.auth_status)
+
+  },
   setup() {},
 };
 </script>

@@ -21,8 +21,8 @@
     <body class="h-full">
     ```
   -->
-  <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-md space-y-8">
+  <div class="flex min-h-full items-center justify-center py-12 px-4  sm:px-6 lg:px-8">
+    <div class="w-full max-w-md space-y-8 ">
       <div class="text-left">
         <h1 class='text-5xl text-prime font-extrabold text-center'> New Town AutoMotive</h1>
         <h2 class="mt-6  text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
@@ -73,7 +73,19 @@ export default {
   },
   methods :{
     submit(){
-      alert('username : '  + this.form.username + ' password : ' + this.form.password)
+      // alert('username : '  + this.form.username + ' password : ' + this.form.password)
+      this.$store.commit('login' , this.form)
+      var auth = this.$store.state.user.authenticated;
+      if(auth){
+        this.$router.push('/invoices')
+      }else{
+       this.$swal({
+        title: "Please Check Username/Password",
+        text: "You are not authorized!",
+        type: "warning",
+      })
+      }
+
     },
 
   }

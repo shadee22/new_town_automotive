@@ -5,9 +5,9 @@
       <Sidebar class="col-span-2" />
       <div class="col-span-10 py-8 h-full pr-4">
         <div class="font-bold text-2xl pb-6 flex items-center gap-4">
-          Add Item to : {{$route.params.invoice_name}}
+          Add Item to : {{ $route.params.invoice_name }}
         </div>
-        <form @submit="save_item" class="">
+        <form @submit.prevent="save_item" class="">
           <div class="flex gap-4 flex-wrap font-semibold">
             <div v-for="(value, name, index) in form" :key="index">
               {{ name.split("_").join(" ") }} :
@@ -57,10 +57,10 @@ export default {
         retail_price: "",
       },
     };
-  },
-  created(){
-    if(this.$route.params.table_name){
+  },  middleware : 'authenticated',
 
+  created() {
+    if (this.$route.params.table_name) {
     }
   },
   methods: {
@@ -71,9 +71,22 @@ export default {
           form: this.form,
         })
         .then((res) => {
-            if(res.status == 200){
-                alert('item added succusfully')
-            }
+          if (res.status == 200) {
+            alert("item added succusfully");
+            this.form = {
+              no: "",
+              item: "",
+              item_model: "",
+              model_version: "",
+              item_color: "",
+              quantity: "",
+              cartons: "",
+              availability: "",
+              dispatch: "",
+              wholesale_price: "",
+              retail_price: "",
+            };
+          }
         })
         .catch((e) => alert(e));
     },

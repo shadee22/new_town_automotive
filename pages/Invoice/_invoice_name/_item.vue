@@ -86,7 +86,8 @@ export default {
         retail_price: "",
       },
     };
-  },
+  },  middleware : 'authenticated',
+
   mounted() {
     function orderJSON(json, order) {
       let ordered = {};
@@ -119,8 +120,10 @@ export default {
         item_code : this.$route.params.item
       }).then(res=>{
         console.log(res)
+        // this.$router.push('/invoices/'+ this.$route.params.invoice_name)
       }).catch(e=>{
-        alert(e)
+        // alert(e)
+        // console.log(e);
       })
     },
     edit_form() {
@@ -137,6 +140,7 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             alert("Edited Succussfully");
+            this.$router.push('/invoicew/' + this.$route.params.invoice_name )
           }
         })
         .catch((e) => alert(e));

@@ -5,7 +5,7 @@
       <Sidebar class="col-span-2" />
       <div class="col-span-10">
         <div class="font-bold text-2xl py-2">New Invoice</div>
-        <form @submit="create_new_invoice">
+        <form @submit.prevent="create_new_invoice">
           <div class="w-full md:w-1/2 mb-6 md:mb-0">
             <input
               class="
