@@ -42,7 +42,14 @@
           </div>
         </div>
 
-        <div class="flex items-center justify-between">
+       
+
+        <div>
+          <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-prime py-2 px-4 text-sm font-medium text-white hover:bg-prime focus:outline-none focus:ring-2  focus:ring-offset-2">
+            Sign in
+          </button>
+        </div>
+         <div class="flex items-center justify-between">
           <div class="flex items-center text-gray-500 text-sm font-medium ">
              <Icon icon='info' class='mr-2'/>Enter credentials properly!
           </div>
@@ -50,12 +57,6 @@
           <div class="text-sm">
             <NuxtLink to="support" class="font-medium text-prime hover:text-gray-800">Support</NuxtLink>
           </div>
-        </div>
-
-        <div>
-          <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-prime py-2 px-4 text-sm font-medium text-white hover:bg-prime focus:outline-none focus:ring-2  focus:ring-offset-2">
-            Sign in
-          </button>
         </div>
       </form>
     </div>
