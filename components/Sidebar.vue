@@ -1,6 +1,6 @@
 <template>
   <main class="w-full h-full">
-    <div class="px-3 py-4 overflow-y-auto rounded dark:bg-gray-800">
+    <div class="px-3 py-4 overflow-y-auto rounded ">
       <ul class="">
         <li
           v-for="sidebar in sidebars"

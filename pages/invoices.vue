@@ -39,7 +39,7 @@
                   font-bold
                   tracking-tight
                   text-gray-900
-                  dark:text-white
+                  
                 "
               >
                 {{ i }}

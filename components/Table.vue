@@ -36,7 +36,7 @@
           "
         >
           <svg
-            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+            class="w-5 h-5 text-gray-500 "
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,12 +62,7 @@
             w-80
             pl-10
             p-2.5
-            dark:bg-gray-700
-            dark:border-gray-600
-            dark:placeholder-gray-400
-            dark:text-white
-            dark:focus:ring-blue-500
-            dark:focus:border-blue-500
+          
           "
           placeholder="Search for items"
         />
@@ -96,14 +91,14 @@
     </div>
     <table
       v-else
-      class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+      class="w-full text-sm text-left text-gray-500"
     >
       <thead
         class="
           text-xs text-gray-700
           uppercase
           bg-gray-50
-          dark:bg-gray-700 dark:text-gray-400
+         
         "
       >
         <tr>
@@ -121,11 +116,10 @@
           class="
             bg-white
             border-b
-            dark:bg-gray-800 dark:border-gray-700
             hover:bg-gray-100
             transition-all
             cursor-pointer
-            dark:hover:bg-gray-600
+
           "
         >
           <th
@@ -135,7 +129,7 @@
               py-4
               font-medium
               text-gray-900
-              dark:text-white
+           
               whitespace-nowrap
             "
           >
@@ -161,9 +155,9 @@
           class="
             bg-white
             border-b
-            dark:bg-gray-800 dark:border-gray-700
+           
             hover:bg-gray-50
-            dark:hover:bg-gray-600
+         
           "
         >
           <th
@@ -173,7 +167,7 @@
               py-4
               font-medium
               text-gray-900
-              dark:text-white
+           
               whitespace-nowrap
             "
           >
