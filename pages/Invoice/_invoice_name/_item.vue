@@ -7,8 +7,17 @@
         <div class="font-bold text-2xl pb-6 flex items-center gap-4">
           <NuxtLink
             :to="'/invoice/' + $route.params.invoice_name"
-            class="text-white px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-sm text-semibold"
-            >Go back </NuxtLink>
+            class="
+              text-white
+              px-4
+              py-2
+              rounded-full
+              bg-blue-600
+              hover:bg-blue-700
+              text-sm text-semibold
+            "
+            >Go back
+          </NuxtLink>
           Editing : Invoice - {{ $route.params.invoice_name }} | Item Code :
           {{ $route.params.item }}
         </div>
@@ -29,7 +38,7 @@
                 />
               </div>
             </div>
-            <div class="flex ">
+            <div class="flex">
               <div
                 @click="delete_item_from_invoice"
                 class="
@@ -74,6 +83,7 @@ export default {
   data() {
     return {
       form: [],
+      total_value: [],
       edited_form: {},
       loaded: false,
       order: {
@@ -90,8 +100,8 @@ export default {
         retail_price: "",
       },
     };
-  },  middleware : 'authenticated',
-
+  },
+  middleware: "authenticated",
   mounted() {
     function orderJSON(json, order) {
       let ordered = {};
@@ -103,6 +113,18 @@ export default {
       return ordered;
     }
 
+    // var name = this.$route.params.invoice_name;
+    // this.$axios
+    //   .post("get_all_data_for_invoice", {
+    //     invoice_name: name,
+    //   })
+    //   .then((res) => {
+    //     console.log('totoal' , res)
+    //     this.total_value = res;
+    //   })
+    //   .catch((e) => {
+    //     alert(e);
+    //   });
     this.$axios
       .post("/load_current_item", {
         invoice_name: this.$route.params.invoice_name,
@@ -114,21 +136,24 @@ export default {
       })
       .catch((e) => {
         alert(e);
-        this.$router.push('/invoices')
+        this.$router.push("/invoices");
       });
   },
   methods: {
-    delete_item_from_invoice(){
-      this.$axios.post('/delete_item_from_invoice',{
-        invoice_name : this.$route.params.invoice_name,
-        item_code : this.$route.params.item
-      }).then(res=>{
-        console.log(res)
-        // this.$router.push('/invoices/'+ this.$route.params.invoice_name)
-      }).catch(e=>{
-        // alert(e)
-        // console.log(e);
-      })
+    delete_item_from_invoice() {
+      this.$axios
+        .post("/delete_item_from_invoice", {
+          invoice_name: this.$route.params.invoice_name,
+          item_code: this.$route.params.item,
+        })
+        .then((res) => {
+          console.log(res);
+          this.$router.push('/invoice/'+ this.$route.params.invoice_name)
+        })
+        .catch((e) => {
+          // alert(e)
+          // console.log(e);
+        });
     },
     edit_form() {
       // this.form
@@ -144,7 +169,7 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             alert("Edited Succussfully");
-            this.$router.push('/invoicew/' + this.$route.params.invoice_name )
+            this.$router.push("/invoicew/" + this.$route.params.invoice_name);
           }
         })
         .catch((e) => alert(e));

@@ -94,7 +94,7 @@ export default {
       collection: undefined,
     };
   },
-   middleware : 'authenticated',
+  middleware : 'authenticated',
 
   async created() {
     // var status = this.$store.getters.auth_status;

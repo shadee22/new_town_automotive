@@ -4,8 +4,8 @@ export const state = () => ({
         authenticated: false
     },
     credentials: {
-        username: 'shadeer',
-        password: 'shadeer'
+        username: 'newtown',
+        password: 'gw@2668'
     }
 })
 

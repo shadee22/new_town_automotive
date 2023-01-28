@@ -44,6 +44,7 @@ export default {
       invoice_name: "",
     };
   },
+   middleware : 'authenticated',
   methods: {
     async create_new_invoice() {
       alert("created  : " + this.invoice_name);
