@@ -19,6 +19,22 @@
       >
         + Add Item
       </button>
+      <button
+        class="
+          text-base
+          font-semibold
+          px-4
+          py-2
+          rounded-lg
+          text-green-600
+          hover:text-white
+          hover:bg-green-700
+          transition-all
+        "
+        @click="download_excel"
+      >
+        Download Excel file
+      </button>
     </div>
     <!-- {{filtered}} -->
     <div class="pb-2">
@@ -36,7 +52,7 @@
           "
         >
           <svg
-            class="w-5 h-5 text-gray-500 "
+            class="w-5 h-5 text-gray-500"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +78,6 @@
             w-80
             pl-10
             p-2.5
-          
           "
           placeholder="Search for items"
         />
@@ -89,18 +104,8 @@
     <div v-if="data.length >= 0" class="font-bold p-8 text-2xl text-black">
       Loading <span class="animate-ping">...</span>
     </div>
-    <table
-      v-else
-      class="w-full text-sm text-left text-gray-500"
-    >
-      <thead
-        class="
-          text-xs text-gray-700
-          uppercase
-          bg-gray-50
-         
-        "
-      >
+    <table v-else class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
           <th v-for="(i, value) in form" scope="col" :key="i" class="px-6 py-3">
             {{ value }}
@@ -119,19 +124,11 @@
             hover:bg-gray-100
             transition-all
             cursor-pointer
-
           "
         >
           <th
             scope="row"
-            class="
-              px-6
-              py-4
-              font-medium
-              text-gray-900
-           
-              whitespace-nowrap
-            "
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
           >
             {{ obj["no"] }}
           </th>
@@ -152,24 +149,11 @@
         <tr
           v-for="obj in filtered"
           :key="obj"
-          class="
-            bg-white
-            border-b
-           
-            hover:bg-gray-50
-         
-          "
+          class="bg-white border-b hover:bg-gray-50"
         >
           <th
             scope="row"
-            class="
-              px-6
-              py-4
-              font-medium
-              text-gray-900
-           
-              whitespace-nowrap
-            "
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
           >
             {{ obj["no"] }}
           </th>
@@ -285,8 +269,8 @@ export default {
         })
         .reduce((total, num) => total + num, 0);
       return {
-        ava : availability_total,
-        disp : dispatch_total,
+        ava: availability_total,
+        disp: dispatch_total,
       };
     },
   },
@@ -304,6 +288,30 @@ export default {
       });
   },
   methods: {
+    async download_excel() {
+      alert(this.filtered.length)
+      if (this.filtered.length >= 2) {
+        try {
+          const res = await this.$axios.post(
+            "/convert",
+            {
+              data: this.filtered
+            },
+            { responseType: "blob" }
+          );
+          const url = window.URL.createObjectURL(new Blob([res.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "file.xls");
+          document.body.appendChild(link);
+          link.click();
+        } catch (err) {
+          console.error(err);
+        }
+      }else{
+        alert("downloadable  rows minimum should be 2!!")
+      }
+    },
     select_product(i) {
       this.$router.push("/invoice/" + this.name + "/" + i.no);
       // alert('invoice/'+ this.name + '/'+ i.no)

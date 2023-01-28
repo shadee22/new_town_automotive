@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // '~/plugins/json2xls.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +42,7 @@ export default {
     {path: '/load_current_item', handler: '~/api/load_current_item.js'},
     {path: '/edit_item', handler: '~/api/edit_item.js'},
     {path: '/delete_item_from_invoice', handler: '~/api/delete_item_from_invoice.js'},
+    {path: '/convert', handler: '~/api/convert.js'},
   ],
   // baseUrl : 'https://new-town-automotive.vercel.app/',
   axios : {
