@@ -148,6 +148,7 @@
       <tbody v-if="search_input !== ''">
         <tr
           v-for="obj in filtered"
+          @click="select_product(obj)"
           :key="obj"
           class="bg-white border-b hover:bg-gray-50"
         >
