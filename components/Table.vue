@@ -27,8 +27,7 @@
           py-2
           rounded-lg
           text-green-600
-          hover:text-white
-          hover:bg-green-700
+          hover:text-white hover:bg-green-700
           transition-all
         "
         @click="download_excel"
@@ -115,7 +114,7 @@
       <!-- Default -->
       <tbody v-if="search_input === '' || filtered.length == 0">
         <tr
-          v-for="(obj, index) in data?.data?.arr"
+          v-for="(obj, index) in sort_data"
           :key="index"
           @click="select_product(obj)"
           class="
@@ -274,6 +273,16 @@ export default {
         disp: dispatch_total,
       };
     },
+    sort_data() {
+      if (this.data.data?.arr) {
+        let a = this.data.data?.arr.sort(function (a, b) {
+          return a.no - b.no;
+        });
+        return a;
+      } else {
+        return [];
+      }
+    },
   },
   created() {
     this.$axios
@@ -283,6 +292,7 @@ export default {
       .then((res) => {
         // console.log(res)
         this.data = res;
+        // console.log(mapSort2);
       })
       .catch((e) => {
         alert(e);
@@ -290,13 +300,13 @@ export default {
   },
   methods: {
     async download_excel() {
-      alert(this.filtered.length)
+      alert(this.filtered.length);
       if (this.filtered.length >= 2) {
         try {
           const res = await this.$axios.post(
             "/convert",
             {
-              data: this.filtered
+              data: this.filtered,
             },
             { responseType: "blob" }
           );
@@ -309,8 +319,8 @@ export default {
         } catch (err) {
           console.error(err);
         }
-      }else{
-        alert("downloadable  rows minimum should be 2!!")
+      } else {
+        alert("downloadable  rows minimum should be 2!!");
       }
     },
     select_product(i) {
